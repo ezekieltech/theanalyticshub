@@ -41,6 +41,9 @@ SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ['*']
 
+# cuustomer user model
+AUTH_USER_MODEL = 'account.CustomUser'
+
 
 # Application definition
 
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'mainWebsite',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +94,7 @@ WSGI_APPLICATION = 'theanalyticshub.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db(),
+    'default': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db'),
     # read os.environ['SQLITE_URL']
     'extra': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db')
 }
