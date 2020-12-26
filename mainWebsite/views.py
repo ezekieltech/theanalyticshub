@@ -1,6 +1,7 @@
 from django.views import generic
 from django.shortcuts import redirect
 from .models import Post, Service, STAGE
+from django_hosts.resolvers import reverse
 
 
 class PostList(generic.ListView):
@@ -9,6 +10,8 @@ class PostList(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(PostList, self).get_context_data(**kwargs) 
+        # homepage_url = reverse('home', host='homepage')
+        # context['homepage_url'] = homepage_url
         list_of_case_studies = Post.objects.filter(status=1,post_type='featured').order_by('-created_on')
         list_of_services = Service.objects.all  # used for main and footer menu
         context['list_of_case_studies'] = list_of_case_studies[:5]
