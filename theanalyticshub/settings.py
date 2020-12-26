@@ -80,7 +80,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'theanalyticshub.urls'
 ROOT_HOSTCONF = 'theanalyticshub.hosts'
 DEFAULT_HOST = ' '
-# PARENT_HOST = '127.0.0.1'
+PARENT_HOST = 'localhost:8000'
 
 TEMPLATES = [
     {
@@ -94,9 +94,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'builtins': [
-                'django_hosts.templatetags.hosts_override'
-            ]
         },
     },
 ]
