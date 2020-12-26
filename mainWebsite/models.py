@@ -24,6 +24,18 @@ TYPE = (
     ('project', 'project')
 )
 
+class Service (models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
+    image = models.ImageField(upload_to='service/', blank=True, null=True)
+    sales_point = models.TextField()
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     post_image = models.ImageField(
@@ -32,9 +44,9 @@ class Post(models.Model):
                                       null=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
-    # department = models.ForeignKey('Department', on_delete=models.CASCADE,
-    #                                related_name='department_post', blank=True,
-    #                                null=True,)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE,
+                                   related_name='service_post', blank=True,
+                                   null=True,)
     # industry = models.ForeignKey('Industry', on_delete=models.CASCADE, null = True, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     focus = models.TextField(blank=True,null=True)
@@ -51,3 +63,19 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Industry (models.Model):
+    pass
+    # name = models.CharField(max_length=200, unique=True)
+    # focus = models.TextField()
+
+    # class Meta:
+    #     ordering = ['name']
+
+    # def __str__(self):
+    #     return self.name
+    
+
+
+

@@ -11,12 +11,14 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import environ
+import os
+from pathlib import Path
 
-root = environ.Path(__file__)
+root = environ.Path(__file__) - 3
+BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
-
+environ.Env.read_env()
 SITE_ROOT = root()
-
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -74,7 +76,7 @@ ROOT_URLCONF = 'theanalyticshub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/ 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,3 +142,6 @@ MEDIA_ROOT = public_root('media')
 MEDIA_URL = env.str('MEDIA_URL', default='media/')
 STATIC_ROOT = public_root('static')
 STATIC_URL = env.str('STATIC_URL', default='static/')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

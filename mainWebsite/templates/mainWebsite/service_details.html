@@ -1,0 +1,57 @@
+{% extends 'mainWebsite/index.html' %}
+{% load static%}
+{% block page_heading %}
+<h3>{{department.name}}</h3>
+
+   <p><small>
+       {{department.sales_point}}
+
+       </small>
+   </p>
+   Testings: {{department}}
+{% endblock %}
+{% block replace_indexhtml_content %}
+
+        <div class="row" style="margin: 50px 20px 0 20px;">
+
+            
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <h4 class="card-header">Recent Blog Posts</h4>
+                        <!-- <small>
+                        {% for post in list_of_post %} {% if post.department %}
+                        {% if forloop.first %}   Filter Post by: {% endif %}
+                            <a href="#" style="color: black">{{post.industry}}</a> 
+                        
+                        {% endif %}{% endfor %}
+                        {% if list_of_post %}
+                        </small> -->
+                      
+                    {% for post in list_of_post %}
+                    {% if post.department == department %}
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-department h6">{{ post.stage}} | {{post.industry}}</p>
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                            <p class="card-text">{{post.content|slice:":200" }}</p>
+                            <div class="text-center"><a href="{% url 'post_detail' post.slug  %}" class="btn">Read More &rarr;</a></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <div class="card-body">
+                        No related post at this time
+                    </div>
+                {% endif %}
+            </div>
+                </div>
+                <div class="col-md-4">
+                    {% include 'snippets/sidebar.html' %}
+                </div>
+            
+        </div>
+
+{% endblock %}

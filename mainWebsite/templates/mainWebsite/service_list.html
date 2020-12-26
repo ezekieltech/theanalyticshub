@@ -1,0 +1,104 @@
+{% extends 'mainWebsite/index.html' %} {% load static%} {% block page_video %}
+<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+  <source src="{% static "/mainWebsite/img/Man_addressing_meeting_2.mp4" %}"
+  type="video/mp4">
+</video>
+{% endblock %} {% block page_heading %}
+<p>Business Growth Starts with the Right Partners</p>
+<a
+  href="mailto:ezekiel.tech@analyticshub.tech?Subject=Book%20appointment"
+  target="_top"
+  class="btn"
+  >Book a FREE Consultation Now</a
+>
+{% endblock %} {% block replace_indexhtml_content %}
+<section class="container services">
+  <div class="row list_of_services" style="margin: 0 auto">
+    
+      <div class="col-md-12">
+        <h2>Our Services</h2>
+      </div>
+      
+    
+    {% for service in service_list %}
+    <div
+      class="row"
+      style="
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      "
+    >
+      <div class="col-md-6">
+        <img
+          class="img-fluid"
+          style="width: 100%"
+          src="{{service.image.url}}"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <div class="col-md-12"><h3>{{service.name}}</h3></div>
+        <div class="col-md-12" style="padding: 0">
+          {{service.sales_point}}<br>
+          <div class="text-center"><a href="{% url 'service_detail' service.slug  %}" class="btn"
+            >Read More &rarr;</a
+          ></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row points">
+    <div class="col-md-4">
+      <img class="img-fluid" src="{% static 'mainWebsite/img/computer.png'%}" />
+      <h3><strong>Smart Techniques</strong></h3>
+      <p>We apply personalised industry best practises for your business.</p>
+      <hr />
+    </div>
+
+    <div class="col-md-4">
+      <img class="img-fluid" src="{% static 'mainWebsite/img/people.png'%}" />
+
+      <h3><strong>Connected Ideas</strong></h3>
+      <p>
+        We define your business requirements, set up KPIs, implement startegies
+        and optimize result.
+      </p>
+      <hr />
+    </div>
+
+    <div class="col-md-4">
+      <img class="img-fluid" src="{% static 'mainWebsite/img/growth.png'%}" />
+      <h3><strong>Smart Growth</strong></h3>
+      <p>Our goal is growth. Local Relevance, Global Impact</p>
+      <hr />
+    </div>
+  </div>
+
+  <div class="card text-center my-4 contact-us">
+    <h2 class="card-header">Contact us</h2>
+    <div class="card-body">
+      <p class="card-text">
+        Are you looking for online strategies to grow your business? Or, do you
+        need guidance on your next project?
+      </p>
+
+      <p>
+        <strong>Book An Appointment Now! </strong>
+      </p>
+      <a
+        href="mailto:ezekiel.obhafuoso@analyticshub.tech?Subject=Hello%20"
+        class="btn"
+        >Email: info@analyticshub.tech</a
+      ><br />
+      <a
+        href="https://wa.me/2347083049565?text=Hi,%20I%20just%20got%20off%20your%20website.%20I'll%20like%20to%20book%20an%20Appointment."
+        class="btn"
+        >WhatsApp/ Call: +2347083049565</a
+      >
+    </div>
+  </div>
+ 
+</section>
+{% endblock %}

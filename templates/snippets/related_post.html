@@ -1,0 +1,21 @@
+<div class="card mb-4">
+    <h4 class="card-header">Recent Blog Posts</h4>
+    {% if related_post %}
+        {% for post in related_post %}
+        <div class="card-body">
+            <p class="card-department h6">{{ post.department}} </p>
+            <h2 class="card-title">{{ post.title }}</h2>
+
+            <p class="card-text text-muted h6">{{ post.author.username }} | {{ post.created_on|date:"d M, Y"}}. </p>
+            <p class="card-text">{{post.content|slice:":200" }}</p>
+            <a href="{% url 'post_detail' post.slug  %}" class="btn">Read More &rarr;</a>
+        </div>
+        {% if forloop.last %}{% else%}
+        <hr>{% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="card-body">
+            No related post at this time
+        </div>
+    {% endif %}
+</div>

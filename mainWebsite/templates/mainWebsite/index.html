@@ -1,0 +1,111 @@
+{% extends "shared/base.html" %}
+{% load static%}
+
+<!-- INHERITED FROM BASE.HTML: Added Naigation specifically for the maijn website -->
+{% block navigation %}
+{% include "snippets/analyticshub_nav.html" %}
+{% endblock %}
+
+<!-- Added Content Area Specifically for the Company -->
+{% block content %}
+<header class="container">
+
+  <!-- Video for main captivating first content - branding -->
+  <div class="row">
+    {% block page_video %}
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="{% static '/mainWebsite/img/Man_addressing_meeting_2.mp4' %}" type="video/mp4">
+    </video>
+    {% endblock %}
+  </div>
+  <!-- End video for main captivating first content - branding -->
+
+  <!-- Heading, Quotes for main captivating first content - branding -->
+  <div class="row index-site-heading">
+    <div class="headingone col-md-8">
+      <div class="site-heading">
+        {% block page_heading %}
+        <!-- <h3>Our Promise to You:<br /><span id="spin" style="font-weight:bold"></span></h3> -->
+        <h1 class="title test-light" style="font-weight:bold; font-size: 42px;">
+          We Grow Your Business
+        </h1>
+        <h4 class="test-light" style="color:white; font-size: 18px;"><em>
+            We train, plan and execute digital marketing, website designs and machine learning
+            for Business Growth, Customer Aquisition, Local Relevance & Global Impact.</em>
+        </h4>
+        
+        
+        <a href="{% url 'services' %}" class="btn">Get a FREE Consultation</a>
+        
+           
+        {% endblock %}
+      </div>
+    </div>
+    <!-- <div class="col-md-4" style="visibility: hidden"></div> -->
+  </div>
+</header>
+
+{% block replace_indexhtml_content %}
+<section class="container carouselcasestudies">
+  <div class="row">
+    <div class="col-md-8">
+      <div id="carousel" class="slide carousel" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          {% for case_study in list_of_case_studies %}
+          <li data-target="#carousel" data-slide-to="{{forloop.counter0}}" {%if forloop.first%}class="active" {% endif %}>
+          </li>
+          {% endfor %}
+        </ol>
+        <!--/.Indicators-->
+  
+        <div class="card">
+          <h4 class="card-header"> Recent Projects</h4>
+          <div class="carousel-inner v-2" role="listbox">
+            {% for case_study in list_of_case_studies %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+              <img class="card-img-top" src="{{case_study.post_image.url}}" alt="{{case_study.post_image_alt}}">
+              <div class="card-body">
+                <h4 class="card-title font-weight-bold">{{case_study.title}}</h4>
+                <p class="card-text">{{case_study.focus |slice:":240" }}</p>
+                <a class="btn btn-primary btn-md btn-rounded" href="{% url 'post_detail' case_study.slug %}">Read
+                  more</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!--  -->
+      {% block sidebar %} {% include 'snippets/sidebar.html' %} {% endblock sidebar %}
+    </div>
+  </div>
+</section>
+
+<!-- Include Related Blog and Contact us via the included ta -->
+<section class="container">
+  <div class="row">
+    <!-- Blog Entries Column -->
+    <div class="col-md-8 mt-3 left">
+      {% block related_recent_post %}
+      {% include 'snippets/related_post.html' with related_post=post_list %}
+      {% endblock %}
+    </div>
+    <!-- End Blog Entries Column -->
+
+    <!-- Contact Us Aside -->
+    <div class="col-md-4 mt-3">
+      {% include 'snippets/contact_us_aside.html' %}
+    </div>
+    <!-- End Contact Us Aside -->
+
+  </div>
+</section>
+<!-- End Include Related Blog and Contact us via the included tag-->
+
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+{% load static%}
+
+<head>
+  <title>The Analytics Hub</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <meta name="google" content="notranslate" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'mainWebsite/css/styles.css' %}" />
+
+  <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <!-- Analytics Hub, Professional Landing Pages, have respective landing page -->
+  {% block navigation  %}{% endblock%}
+
+  <!-- Analytics Hub, Professional Landing Pages, have respective page content -->
+  {% block content %}
+  <!-- Content Goes here -->
+  {% endblock content %}
+
+  <!-- Footer -->
+  {% block footer%}
+  <footer class="page-footer font-small py-3">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">About Analytics Hub</h5>
+          <p>We partner with you to grow your Business.
+            No Guess Work. Just deep research that drives smart growth.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Menu</h5>
+
+          <ul class="list-unstyled">
+            {% for service in list_of_department %}
+              <li><a class="nav-link" href="{% url 'departments' %}">{{service}}</a></li>
+            {% endfor %}
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Connect on...</h5>
+          <!-- To Do -->
+           <ul class="list-unstyled">
+          <li>
+            <a href="https://fb.me/theanalyticshub" target="_">Facebook</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/theanalyticshub" target="_">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/theanalyticshub/" target="_">Instagram</a>
+          </li>
+          <!--<li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul> -->
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      
+      {% if account %}
+        <a>{{account}}</a>
+        {% else %}
+        <a> Analytics Hub NG</a>
+      {% endif %}
+        
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  {% endblock footer%}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="{% static 'theanalyticshub/js/jquery.min.js' %}"></script>
+  <script src="{% static 'theanalyticshub/js/bootstrap.js' %}"></script>
+
+</body>
+
+</html>
