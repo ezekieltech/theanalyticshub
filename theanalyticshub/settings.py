@@ -14,7 +14,7 @@ import environ
 import os
 from pathlib import Path
 
-root = environ.Path(__file__) - 3
+root = environ.Path(__file__) - 2
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env()
