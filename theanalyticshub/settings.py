@@ -59,6 +59,8 @@ INSTALLED_APPS = [
 
     # Third party apps
     'django_hosts',
+    'ckeditor',
+    'ckeditor_uploader', # Required for using widget with file upload 
 
     # custom apps
     'mainWebsite',
@@ -157,3 +159,13 @@ STATIC_URL = env.str('STATIC_URL', default='static/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# This setting specifies a relative path to your CKEditor media upload directory.
+# CKEditor uses Django’s storage API. By default,
+# Django uses the file system storage backend
+# (it will use your MEDIA_ROOT and MEDIA_URL) 
+# and if you don’t use a different backend you have to have 
+# write permissions for the CKEDITOR_UPLOAD_PATH path within MEDIA_ROOT
+CKEDITOR_UPLOAD_PATH = "image_uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_BROWSE_SHOW_DIRS = True

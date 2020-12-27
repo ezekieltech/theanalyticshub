@@ -80,7 +80,7 @@
               <img class="card-img-top" src="{{case_study.post_image.url}}" alt="{{case_study.post_image_alt}}">
               <div class="card-body">
                 <h4 class="card-title font-weight-bold">{{case_study.title}}</h4>
-                <p class="card-text">{{case_study.focus |slice:":240" }}</p>
+                <p class="card-text">{{case_study.focus |slice:":240" | safe}}</p>
                 <a class="btn btn-primary btn-md btn-rounded" href="{% url 'post_detail' case_study.slug %}">Read
                   more</a>
               </div>

@@ -278,6 +278,12 @@ video {
     font-size: 20px;
 }
 
+.post-content::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .head_text {
     color: white;
 }

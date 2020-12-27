@@ -24,8 +24,7 @@ class PostDetail(generic.DetailView):
     template_name = 'mainWebsite/post_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = super(PostDetail, self).get_context_data(**kwargs) 
-        print(context)
+        context = super(PostDetail, self).get_context_data(**kwargs)
         related_blog_post_by_service = Post.objects.filter(status=1, post_type= self.object.post_type, service=self.object.service).order_by('-created_on').exclude(title=self.object.title)
         context['related_blog_post_by_service'] = related_blog_post_by_service[:5]
         list_of_services = Service.objects.all  # used for main and footer menu

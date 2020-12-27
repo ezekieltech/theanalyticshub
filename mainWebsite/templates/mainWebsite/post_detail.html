@@ -32,17 +32,22 @@
                     <img class="card-img-top" src="{{post.post_image.url}}" alt="{{case_study.post_image_alt}}">
                     <div class="card-body" style="">
 
-
-                        <p class="card-text ">{{ object.content | safe }}</p>
+                        <p class="card-text post-content">{{ object.content | safe }}</p>
+                        
                         <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
                     </div>
                 </div>
             </article>
             <aside class="col-md-4">
                 <div class="row">
+                    
+                    {% comment %}{% endcomment %}
                     <div class="col-md-12">
                         {% include 'snippets/related_post.html' with related_post=related_blog_post_by_service %}
                     </div>
+                    
+                        
+
                     <div class="col-md-12">
                         {% include 'snippets/contact_us_aside.html' %}
                     </div>

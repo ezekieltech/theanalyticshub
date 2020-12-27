@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
 
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
+
 User = settings.AUTH_USER_MODEL
 
 
@@ -49,8 +52,8 @@ class Post(models.Model):
                                    null=True,)
     # industry = models.ForeignKey('Industry', on_delete=models.CASCADE, null = True, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
-    focus = models.TextField(blank=True,null=True)
-    content = models.TextField()
+    focus = RichTextField(blank=True,null=True)
+    content = RichTextUploadingField (blank=True,null=True,default='Post Content')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     stage = models.CharField(max_length=400, choices=STAGE, blank=True,
