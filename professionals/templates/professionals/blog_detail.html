@@ -1,0 +1,57 @@
+{% extends 'shared/base.html' %}
+{% load static%}
+
+<!-- Added Naigation specifically for the company. Navigation will be different for Staff Page -->
+{% block navigation %}
+{% include "snippets/user_nav.html" %}
+{% endblock %}
+<!-- End: Added Naigation specifically for the company. Navigation will be different for Staff Page -->
+
+<!-- Main Content for the detailed article whihc may be a post, landing page or case study -->
+{% block content %}
+<header class="container">
+    <div class="row">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="{% static "/mainWebsite/img/Man_addressing_meeting_2.mp4" %}" type="video/mp4">
+        </video>
+    </div>
+</header>
+
+<section class="blog-post">
+    <div class="container">
+        <div class="row">
+            <article class="col-md-8">
+                <div class="blog-post-heading">
+                    <div class="post-heading">
+                        <small style="color:#fff" class="card-department">{{ post.service }} |
+                            {{ post.stage }}</small>
+                        <h1 style="color:#EF9822;font-weight:bold">{{ object.title }}</h1>
+                    </div>
+                </div>
+                <div class="card" style="background-color:#fff">
+                    <img class="card-img-top" src="{{post.post_image.url}}" alt="{{case_study.post_image_alt}}">
+                    <div class="card-body" style="">
+
+
+                        <p class="card-text ">{{ object.content | safe }}</p>
+                        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+                    </div>
+                </div>
+            </article>
+            <aside class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% include 'snippets/related_post.html' with related_post=related_blog_post_by_service %}
+                    </div>
+                    <div class="col-md-12">
+                        {% include 'snippets/contact_us_aside.html' %}
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+</section>
+
+{% endblock content %}
+<!-- End: Main Content for the detailed article whihc may be a post, landing page or case study   -->

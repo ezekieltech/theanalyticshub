@@ -1,0 +1,84 @@
+  <footer class="page-footer font-small py-3">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">About Me</h5>
+          <p>We partner with you to grow your Business.
+            No Guess Work. Just deep research that drives smart growth.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        
+        {% comment %}
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Menu</h5>
+
+          <ul class="list-unstyled">
+            {% for service in list_of_department %}
+              <li><a class="nav-link" href="{% url 'departments' %}">{{service}}</a></li>
+            {% endfor %}
+          </ul>
+
+        </div>
+        <!-- Grid column -->          
+        {% endcomment %}
+          
+
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Connect on...</h5>
+          <!-- To Do -->
+           <ul class="list-unstyled">
+          <li>
+            <a href="https://fb.me/ezekielobhafuoso" target="_">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/ezekieltech" target="_">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/theanalyticshub/" target="_">YouTube</a>
+          </li>
+          <!--<li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul> -->
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      {{account}}
+      {% if account %}
+        <a>{{account}}</a>
+        {% else %}
+        <a> Analytics Hub NG</a>
+      {% endif %}
+        
+    </div>
+    <!-- Copyright -->
+
+  </footer>

@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      .bg {
+        /* The image used */
+        background-image: url("{% static '/professionals/img/ezekiel.jpeg' %}");
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .call-to-action {
+        position: relative;
+        top: 75%;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        
+        font-size: 28px;
+      }
+
+      li {
+        float: left;
+        background-color: #33333380;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      li a:hover {
+        background-color: #111111;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <div
+        class="text-center"
+        style="
+          margin: 0;
+          position: absolute;
+          top: 25%;
+          left: 10px;
+          color: white;
+          background: #808080a8;
+          width: 300px;
+          border-radius: 15px;
+          text-align: center;
+        "
+      >
+        <h2 style="padding: 0 10px; font-size: 38px">Hi, <br />I'm Ezekiel</h2>
+        <small style="font-size: 20px"
+          ><strong>I'm a Web Developer</strong></small
+        ><br />
+        <span
+          ><em
+            >Django, Django-Rest, Angular, Python, Machine Learning, Javascript,
+            HTML5, Shopify, Digital Marketing
+          </em></span
+        >
+      </div>
+      <div class="call-to-action">
+        <ul
+          style="
+            list-style-type: none;
+            display: block;
+            margin: 0;
+            position: relative;
+          "
+        >
+        
+        
+        <li>
+            <a href="{% url 'projects_list' %}">Portfolio</a>
+          </li>
+          
+          <li>
+            <a href="{% url 'profile_blog' %}">Blog</a>
+          </li>
+          
+          <li>
+            <a href="#">CV</a>
+          </li>
+        
+            
+
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

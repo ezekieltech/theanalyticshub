@@ -1,0 +1,85 @@
+{% extends 'shared/base.html' %}
+<!-- <div>
+    
+    {% for blog in all_post %}
+        <div>{{blog}}</div>
+    {% endfor %}
+        
+</div> -->
+{% block navigation %} {% include 'snippets/user_nav.html' %} {% endblock%} 
+{% block content %}
+<section style="margin: 100px 10px 5px 10px">
+  <div>
+    <h2>
+      {% if 'portfolio' in request.get_full_path %}Projects{% endif %}
+      {% if 'blog' in request.get_full_path %}Blog Post{% endif %}
+    </h2>
+  </div>
+  <div class="row">
+    
+    {% if 'blog' in request.get_full_path %}
+
+    {% for post in user_posts %}
+    <div class="col-md-4 ml-3 card mb-4">
+      <div class="card-body">
+        <p class="card-department h6">{{ post.department}}</p>
+        <h2 class="card-title">{{ post.title }}</h2>
+        <p class="card-text text-muted h6">
+          {{ post.author }} | {{ post.created_on}}
+        </p>
+        <p class="card-text">{{post.content|slice:":200" }}</p>
+        
+        
+        <div class="text-center">
+          <a href="{% url 'profile_blogs' post.slug  %}" class="btn"
+            >Read More &rarr;</a
+          >
+        </div>
+        
+          
+
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {%  if 'portfolio' in request.get_full_path %}
+    {% for post in all_projects %}
+    <div class="col-md-4 ml-3 card mb-4">
+      <div class="card-body">
+        <p class="card-department h6">{{ post.department}}</p>
+        <h2 class="card-title">{{ post.title }}</h2>
+        <p class="card-text text-muted h6">
+          {{ post.author }} | {{ post.created_on}}
+        </p>
+        <p class="card-text">{{post.content|slice:":200" }}</p>
+        
+        {% comment %}{% endcomment %}
+        <div class="text-center">
+          <a href="{% url 'projects_detail' post.slug  %}" class="btn"
+            >Read More &rarr;</a
+          >
+        </div>
+        
+          
+
+      </div>
+    </div>
+    {% endfor %}      
+  
+      
+
+    {% endif %}
+      
+    
+
+  </div>
+</section>
+{% endblock content %}
+
+
+{% block footer %}
+    {% include "snippets/staff_footer.html" %}
+{% endblock footer %}
+    
