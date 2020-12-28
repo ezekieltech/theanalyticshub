@@ -8,7 +8,7 @@
 
             <p class="card-text text-muted h6">{{ post.author.username }} | {{ post.created_on|date:"d M, Y"}}. </p>
             <p class="card-text">{{post.focus|slice:":200" | safe}}</p>
-            <a href="{% url 'post_detail' post.slug  %}" class="btn">Read More &rarr;</a>
+            <a href="{% url 'profile_blogs' post.slug  %}" class="btn">Read More &rarr;</a>
         </div>
         {% if forloop.last %}{% else%}
         <hr>{% endif %}

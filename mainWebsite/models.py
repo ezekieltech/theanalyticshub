@@ -70,15 +70,3 @@ class Post(models.Model):
 
 class Industry (models.Model):
     pass
-    # name = models.CharField(max_length=200, unique=True)
-    # focus = models.TextField()
-
-    # class Meta:
-    #     ordering = ['name']
-
-    # def __str__(self):
-    #     return self.name
-    
-
-
-

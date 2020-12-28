@@ -16,10 +16,5 @@ urlpatterns = [
     url(r'^blogs/(?P<slug>.+)/$', views.UserPostDetail.as_view(), name='profile_blogs'),
     url(r'^portfolio/(?P<slug>.+)/$', views.UserPostDetail.as_view(), name='projects_detail'),
     url(r'^portfolio/$', views.UserPosts.as_view(), name='projects_list'),
-    # url(r'^posts/(?P<slug>.+)/$', views.PostDetail.as_view(), name='user_detail'),
-    # url(r'^service/(?P<slug>.+)/$', views.ServiceDetail.as_view(), name='service_detail'),
-    # url(r'^services/$', views.ServiceList.as_view(), name='services'),
-    # url(r'^(?P<user>.+)/$', views.ServiceDetail.as_view(), name='profile_detail'),
-    # url(r'^profile/$', views.ProfileList.as_view(), name='profile'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

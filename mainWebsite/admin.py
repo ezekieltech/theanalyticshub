@@ -21,8 +21,6 @@ admin.site.register(Service, ServiceAdmin)
 
 class IndustryAdmin(admin.ModelAdmin):
     pass
-    # list_display = ('name', 'focus')
-    # list_filter = ("name",)
 
 
 admin.site.register(Industry, IndustryAdmin)

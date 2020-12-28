@@ -1,11 +1,4 @@
 {% extends 'shared/base.html' %}
-<!-- <div>
-    
-    {% for blog in all_post %}
-        <div>{{blog}}</div>
-    {% endfor %}
-        
-</div> -->
 {% block navigation %} {% include 'snippets/user_nav.html' %} {% endblock%} 
 {% block content %}
 <section style="margin: 100px 10px 5px 10px">
@@ -27,7 +20,7 @@
         <p class="card-text text-muted h6">
           {{ post.author }} | {{ post.created_on}}
         </p>
-        <p class="card-text">{{post.content|slice:":200" }}</p>
+        <p class="card-text">{{post.content|slice:":200"| safe }}</p>
         
         
         <div class="text-center">
@@ -53,7 +46,7 @@
         <p class="card-text text-muted h6">
           {{ post.author }} | {{ post.created_on}}
         </p>
-        <p class="card-text">{{post.content|slice:":200" }}</p>
+        <p class="card-text">{{post.content|slice:":200" | safe}}</p>
         
         {% comment %}{% endcomment %}
         <div class="text-center">

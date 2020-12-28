@@ -9,9 +9,7 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
 
     def get_context_data(self, **kwargs):
-        context = super(PostList, self).get_context_data(**kwargs) 
-        # homepage_url = reverse('home', host='homepage')
-        # context['homepage_url'] = homepage_url
+        context = super(PostList, self).get_context_data(**kwargs)
         list_of_case_studies = Post.objects.filter(status=1,post_type='featured').order_by('-created_on')
         list_of_services = Service.objects.all  # used for main and footer menu
         context['list_of_case_studies'] = list_of_case_studies[:5]
@@ -56,9 +54,3 @@ class ServiceList(generic.ListView):
         list_of_services = Service.objects.all # used for main and footer menu
         context['list_of_services'] = list_of_services # used for main and footer menu
         return context
-
-
-# def redirect_view(request):
-#     author = Post.author
-#     response = redirect('/%s/' % author)
-#     return response

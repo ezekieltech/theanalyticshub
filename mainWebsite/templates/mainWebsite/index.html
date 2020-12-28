@@ -25,19 +25,7 @@
   <div class="row index-site-heading">
     <div class="headingone col-md-8">
       <div class="site-heading">
-        {% block page_heading %}
-        {% comment %}
-        <div style="margin: 200px; color: black">
-          
-          <a style="color: black" href="{% host_url 'home' host 'user-area' username='ezekiel' %}">Homepage</a>
-        
-          
-        <a href="{% host_url 'post_detail' host 'user-area' %}">Help Articles</a>
-        
-        </div>
-        {% endcomment %}
-        
-        <!-- <h3>Our Promise to You:<br /><span id="spin" style="font-weight:bold"></span></h3> -->
+        {% block page_heading %}        
         <h1 class="title test-light" style="font-weight:bold; font-size: 42px;">
           We Grow Your Business
         </h1>
@@ -53,7 +41,6 @@
         {% endblock %}
       </div>
     </div>
-    <!-- <div class="col-md-4" style="visibility: hidden"></div> -->
   </div>
 </header>
 
