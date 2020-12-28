@@ -169,3 +169,7 @@ STATICFILES_DIRS = [
 CKEDITOR_UPLOAD_PATH = "image_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_BROWSE_SHOW_DIRS = True
+
+# related to errors in terminal
+# refer: https://github.com/wagtail/wagtail/issues/4254
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000

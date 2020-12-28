@@ -1,0 +1,13 @@
+{% extends 'shared/base.html' %}
+{% load static%}
+
+<!-- Added Naigation specifically for the company. Navigation will be different for Staff Page -->
+{% block navigation %}
+{% include "snippets/user_nav.html" %}
+{% endblock %}
+<!-- End: Added Naigation specifically for the company. Navigation will be different for Staff Page -->
+
+
+{% block footer %}
+    {% include 'snippets/staff_footer.html' %}
+{% endblock footer %}

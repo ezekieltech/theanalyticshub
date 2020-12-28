@@ -1,12 +1,5 @@
-{% extends 'shared/base.html' %}
+{% extends 'professionals/index.html' %}
 {% load static%}
-
-<!-- Added Naigation specifically for the company. Navigation will be different for Staff Page -->
-{% block navigation %}
-{% include "snippets/user_nav.html" %}
-{% endblock %}
-<!-- End: Added Naigation specifically for the company. Navigation will be different for Staff Page -->
-
 <!-- Main Content for the detailed article whihc may be a post, landing page or case study -->
 {% block content %}
 <header class="container">
@@ -54,9 +47,5 @@
 </section>
 
 {% endblock content %}
-
-{% block footer %}
-    {% include 'snippets/staff_footer.html' %}
-{% endblock footer %}
     
 <!-- End: Main Content for the detailed article whihc may be a post, landing page or case study   -->
