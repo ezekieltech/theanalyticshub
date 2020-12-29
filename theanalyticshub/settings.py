@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import environ
 import os
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key
+import sys
+import dj_database_url
 
 root = environ.Path(__file__) - 2
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,8 +32,11 @@ env = environ.Env(
 environ.Env.read_env()
 
 # False if not in os.environ
-DEBUG = env('DEBUG')
+# DEBUG = env('DEBUG')
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
+# Setting the Development Mode
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,10 +44,11 @@ DEBUG = env('DEBUG')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = env('SECRET_KEY') # normal syntax from djangoenvirons
+SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key()) # the function needed for deployment
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost,ezekiel.localhost").split(",")
 
 # cuustomer user model
 AUTH_USER_MODEL = 'account.CustomUser'
@@ -109,11 +116,36 @@ WSGI_APPLICATION = 'theanalyticshub.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db'),
-    # read os.environ['SQLITE_URL']
-    'extra': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db')
-}
+# DATABASES = {
+#     'default': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db'),
+#     # read os.environ['SQLITE_URL']
+#     'extra': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db')
+# }
+
+'''
+facilitate development of application locally - determine
+if DEVELOPMENT_MODE is set to True and which database should be accessed
+
+Django shouldn't attempt to make a database connection to the 
+PostgreSQL database when attempting to collect the static files
+
+so examine the command that was executed and not connect to a database 
+if the command given was collectstatic.
+
+ App Platform will automatically collect static files when the app is deployed.
+ '''
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        'default': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db'),
+        # read os.environ['SQLITE_URL']
+        'extra': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db')
+    }
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 
 # Password validation
