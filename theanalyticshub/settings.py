@@ -48,7 +48,7 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key()) # the function needed for deployment
 
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost,ezekiel.localhost").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "analyticshub.tech,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
 
 # cuustomer user model
 AUTH_USER_MODEL = 'account.CustomUser'
@@ -143,7 +143,16 @@ if DEVELOPMENT_MODE is True:
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv("POSTGRESS_NAME", None),
+            'USER': os.getenv("POSTGRESS_USER", None),
+            'PASSWORD': os.getenv("POSTGRESS_PSSWRD", None),
+            'HOST': '',
+            'PORT': '',
+        }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
