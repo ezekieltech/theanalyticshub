@@ -143,8 +143,16 @@ if DEVELOPMENT_MODE is True:
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {'default': env.db('DATABASE_URL')}
-
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': env("POSTGRESS_NAME", None),
+                'USER': env("POSTGRESS_USER", None),
+                'PASSWORD': env("POSTGRESS_PSSWRD", None),
+                'HOST': '',
+                'PORT': '',
+            }
+        }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
