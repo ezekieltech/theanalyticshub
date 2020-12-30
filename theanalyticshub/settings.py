@@ -144,14 +144,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv("POSTGRESS_NAME", None),
-            'USER': os.getenv("POSTGRESS_USER", None),
-            'PASSWORD': os.getenv("POSTGRESS_PSSWRD", None),
-            'HOST': '',
-            'PORT': '',
-        }
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
 }
 
 # Password validation
@@ -192,8 +185,8 @@ USE_TZ = True
 public_root = root.path('public/')
 MEDIA_ROOT = public_root('media')
 MEDIA_URL = env.str('MEDIA_URL', default='media/')
-STATIC_ROOT = public_root('static')
-STATIC_URL = env.str('STATIC_URL', default='static/')
+STATIC_ROOT = public_root('staticfiles')
+STATIC_URL = env.str('STATIC_URL', default='/static/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
