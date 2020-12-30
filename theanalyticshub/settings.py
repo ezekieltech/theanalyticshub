@@ -146,9 +146,9 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql',
-                'NAME': env("POSTGRESS_NAME"),
-                'USER': env("POSTGRESS_USER"),
-                'PASSWORD': env("POSTGRESS_PSSWRD"),
+                'NAME': os.getenv("POSTGRESS_NAME", None),
+                'USER': os.getenv("POSTGRESS_USER", None),
+                'PASSWORD': os.getenv("POSTGRESS_PSSWRD", None),
                 'HOST': '',
                 'PORT': '',
             }
