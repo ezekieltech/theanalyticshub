@@ -45,7 +45,7 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 # SECRET_KEY = env('SECRET_KEY') # normal syntax from djangoenvirons
-SECRET_KEY = os.getenv("SECRET_KEY", 'sample secret') # the function needed for deployment
+SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key()) # the function needed for deployment
 
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "analyticshub.tech,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
@@ -144,7 +144,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+        "default": dj_database_url.parse(os.getenv("DATABASE_URL","sample url")),
 }
 
 # Password validation
