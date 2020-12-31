@@ -22,4 +22,4 @@ urlpatterns = [
     url(r'', include('mainWebsite.urls')),
     url(r'^profile/', include('professionals.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
