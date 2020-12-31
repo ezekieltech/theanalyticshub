@@ -185,7 +185,7 @@ USE_TZ = True
 public_root = root.path('public/')
 MEDIA_ROOT = public_root('media')
 MEDIA_URL = env.str('MEDIA_URL', default='media/')
-STATIC_ROOT = public_root('staticfiles')
+STATIC_ROOT = public_root('static')
 STATIC_URL = env.str('STATIC_URL', default='/static/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
