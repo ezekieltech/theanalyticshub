@@ -187,14 +187,14 @@ MEDIA_ROOT = public_root('media')
 MEDIA_URL = env.str('MEDIA_URL', default='media/')
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = env.str('STATIC_URL', default='/static/')
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "staticfiles"),
     os.path.join(BASE_DIR, "public"),
 ]
 
