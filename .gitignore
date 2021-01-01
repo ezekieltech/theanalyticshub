@@ -4,7 +4,6 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
 my-local-sqlite.db
 
 # Backup files # 
@@ -117,4 +116,3 @@ GitHub.sublime-settings
 .history
 
 Notes/
-ckeditor/
