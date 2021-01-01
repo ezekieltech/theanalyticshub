@@ -64,7 +64,7 @@
           <div class="carousel-inner v-2" role="listbox">
             {% for case_study in list_of_case_studies %}
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
-              <img class="card-img-top" src="{{case_study.post_image.url}}" alt="{{case_study.post_image_alt}}">
+              <img class="card-img-top" src="{% static case_study.post_image.url %}" alt="{{case_study.post_image_alt}}">
               <div class="card-body">
                 <h4 class="card-title font-weight-bold">{{case_study.title}}</h4>
                 <p class="card-text">{{case_study.focus |slice:":240" | safe}}</p>
