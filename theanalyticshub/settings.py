@@ -85,6 +85,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django_hosts.middleware.HostsResponseMiddleware',
 ]
@@ -187,14 +188,14 @@ MEDIA_ROOT = public_root('media')
 MEDIA_URL = env.str('MEDIA_URL', default='media/')
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = env.str('STATIC_URL', default='/static/')
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),
+    os.path.join(BASE_DIR, "static"),
     os.path.join(BASE_DIR, "public"),
 ]
 
@@ -207,6 +208,9 @@ STATICFILES_DIRS = [
 CKEDITOR_UPLOAD_PATH = "image_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_BROWSE_SHOW_DIRS = True
+
+# Whitenoise: Add compression and caching support
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # related to errors in terminal
 # refer: https://github.com/wagtail/wagtail/issues/4254
