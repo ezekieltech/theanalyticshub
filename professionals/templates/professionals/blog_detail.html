@@ -5,7 +5,7 @@
 <header class="container">
     <div class="row">
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-            <source src="{% static "/mainWebsite/img/Man_addressing_meeting_2.mp4" %}" type="video/mp4">
+            <source src="{% static 'mainWebsite/img/Man_addressing_meeting_2.mp4' %}" type="video/mp4">
         </video>
     </div>
 </header>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="card" style="background-color:#fff">
                     <img class="card-img-top" src="{% static post.post_image.url %}" alt="{{case_study.post_image_alt}}">
-                    <div class="card-body" style="">
+                    <div class="card-body">
 
 
                         <p class="card-text ">{{ object.content | safe }}</p>

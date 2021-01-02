@@ -17,14 +17,6 @@
                 <div class="col-md-8">
                     <div class="card mb-4">
                         <h4 class="card-header">Recent Blog Posts</h4>
-                        <!-- <small>
-                        {% for post in list_of_post %} {% if post.service %}
-                        {% if forloop.first %}   Filter Post by: {% endif %}
-                            <a href="#" style="color: black">{{post.industry}}</a> 
-                        
-                        {% endif %}{% endfor %}
-                        {% if list_of_post %}
-                        </small> -->
                       
                     {% for post in list_of_post %}
                     {% if post.service == service %}
