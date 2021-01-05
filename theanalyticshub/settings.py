@@ -186,7 +186,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 public_root = root.path('public/')
 MEDIA_ROOT = public_root('media')
-MEDIA_URL = env.str('MEDIA_URL', default='media/')
+MEDIA_URL = env.str('MEDIA_URL', default='/media/')
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -218,6 +218,10 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 
 # Whitenoise: Add compression and caching support
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# If a file isn’t found in the staticfiles.json manifest at runtime, a ValueError is raised
+# This disables that behaviour
+# WHITENOISE_MANIFEST_STRICT = False
 
 # related to errors in terminal
 # refer: https://github.com/wagtail/wagtail/issues/4254

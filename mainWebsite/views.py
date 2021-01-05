@@ -13,6 +13,8 @@ class PostList(generic.ListView):
         list_of_case_studies = Post.objects.filter(status=1,post_type='featured').order_by('-created_on')
         list_of_services = Service.objects.all  # used for main and footer menu
         context['list_of_case_studies'] = list_of_case_studies[:5]
+        for post in list_of_case_studies:
+            print(post.post_image.url)
         context['list_of_services'] = list_of_services # used for main and footer menu
         return context
 

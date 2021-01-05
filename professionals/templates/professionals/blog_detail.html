@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="card" style="background-color:#fff">
-                    <img class="card-img-top" src="{% static post.post_image.url %}" alt="{{case_study.post_image_alt}}">
+                    <img class="card-img-top" src="{% static post.post_image.url|slice:'1:' %}" alt="{{case_study.post_image_alt}}">
                     <div class="card-body">
 
 
