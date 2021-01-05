@@ -203,7 +203,7 @@ STATICFILES_DIRS = [
 # ref:https://github.com/django-compressor/django-compressor/issues/720
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    #'django.contrib.staticfiles.finders.AppDirectoriesFinder',    #causes verbose duplicate notifications in django 1.9
+    # 'django.contrib.staticfiles.finders.AppDirectoriesFinder',    #causes verbose duplicate notifications in django 1.9
 )
 
 # This setting specifies a relative path to your CKEditor media upload directory.
