@@ -217,7 +217,8 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_BROWSE_SHOW_DIRS = True
 
 # Whitenoise: Add compression and caching support
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # If a file isn’t found in the staticfiles.json manifest at runtime, a ValueError is raised
 # This disables that behaviour
