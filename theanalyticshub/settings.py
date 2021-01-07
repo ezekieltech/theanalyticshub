@@ -222,7 +222,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 
 # If a file isn’t found in the staticfiles.json manifest at runtime, a ValueError is raised
 # This disables that behaviour
-# WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_MANIFEST_STRICT = False
 
 # related to errors in terminal
 # refer: https://github.com/wagtail/wagtail/issues/4254
