@@ -49,7 +49,7 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY", 'SAMPLE KEY') # the function needed for deployment
 
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "analyticshub.tech,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "analyticshub.tech,68.183.71.69,ezekiel.68.183.71.69,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
 
 # cuustomer user model
 AUTH_USER_MODEL = 'account.CustomUser'
@@ -146,7 +146,14 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
-        "default": dj_database_url.parse(os.getenv("DATABASE_URL","sample url")),
+        "default": {
+            'ENGINE':'django.db.backends.postgresql_psycopg2',
+            'NAME': 'db',
+            'USER': 'ezekiel',
+            'PASSWORD': 'biblesSLUI16?',
+            'HOST': 'localhost',
+            'PORT': ''
+	},
 }
 
 # Password validation
@@ -217,8 +224,8 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_BROWSE_SHOW_DIRS = True
 
 # Whitenoise: Add compression and caching support
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # If a file isn’t found in the staticfiles.json manifest at runtime, a ValueError is raised
 # This disables that behaviour
