@@ -49,7 +49,7 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY", 'SAMPLE KEY') # the function needed for deployment
 
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "analyticshub.tech,68.183.71.69,ezekiel.68.183.71.69,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "analyticshub.tech,68.183.71.69,www.analyticshub.tech,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
 
 # cuustomer user model
 AUTH_USER_MODEL = 'account.CustomUser'
