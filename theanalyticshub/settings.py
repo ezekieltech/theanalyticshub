@@ -49,7 +49,7 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY", 'SAMPLE KEY') # the function needed for deployment
 
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "analyticshub.tech,68.183.71.69,www.analyticshub.tech,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "206.189.31.104, ezekiel.206.189.31.104,analyticshub.tech,68.183.71.69,www.analyticshub.tech,ezekiel.analyticshub.tech,127.0.0.1,localhost,ezekiel.localhost").split(",")
 
 # cuustomer user model
 AUTH_USER_MODEL = 'account.CustomUser'
@@ -143,15 +143,17 @@ if DEVELOPMENT_MODE is True:
         'extra': env.db('SQLITE_URL', default='sqlite:////tmp/my-tmp-sqlite.db')
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
+    #if os.getenv("DATABASE_URL", None) is None:
+     #   pass
+        #raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
         "default": {
-            'ENGINE':'django.db.backends.postgresql_psycopg2',
-            'NAME': 'db',
-            'USER': 'ezekiel',
-            'PASSWORD': 'biblesSLUI16?',
-            'HOST': 'localhost',
+            # 'ENGINE':'django.db.backends.postgresql_psycopg2',
+            'ENGINE':'django.db.backends.postgresql',
+            'NAME': os.getenv('POSTGRESS_NAME', None),
+            'USER': os.getenv('POSTGRESS_USER', None),
+            'PASSWORD': os.getenv('POSTGRESS_PSSWRD', None),
+            'HOST': '',
             'PORT': ''
 	},
 }
@@ -203,15 +205,14 @@ STATIC_URL = env.str('STATIC_URL', default='/static/')
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),
     os.path.join(BASE_DIR, "public"),
 ]
 
 # ref:https://github.com/django-compressor/django-compressor/issues/720
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',    #causes verbose duplicate notifications in django 1.9
-)
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',    #causes verbose duplicate notifications in django 1.9
+# )
 
 # This setting specifies a relative path to your CKEditor media upload directory.
 # CKEditor uses Django’s storage API. By default,
@@ -222,10 +223,10 @@ STATICFILES_FINDERS = (
 CKEDITOR_UPLOAD_PATH = "image_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_BROWSE_SHOW_DIRS = True
-
+CKEDITOR_FORCE_JPEG_COMPRESSION=True
 # Whitenoise: Add compression and caching support
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # If a file isn’t found in the staticfiles.json manifest at runtime, a ValueError is raised
 # This disables that behaviour

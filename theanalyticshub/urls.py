@@ -26,8 +26,8 @@ urlpatterns = [
     url(r'', include('mainWebsite.urls')),
     url(r'^profile/', include('professionals.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    path(
-    "favicon.ico",
-        RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
-        ),
+    # path(
+    # "favicon.ico",
+    #     RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
+    #     ),
 ]
