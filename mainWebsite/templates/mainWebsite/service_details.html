@@ -30,14 +30,13 @@
                             <div class="text-center"><a href="{% url 'post_detail' post.slug  %}" class="btn">Read More &rarr;</a></div>
                         </div>
                     </div>
-                  
                     {% endif %}
-                    {% empty %}
+                    {% endfor %}
+                    {% else %}
                     <div class="card-body">
                         No related post at this time
-                    </div>  
-                    {% endfor %}                       
-
+                    </div>
+                {% endif %}
             </div>
                 </div>
                 <div class="col-md-4">
