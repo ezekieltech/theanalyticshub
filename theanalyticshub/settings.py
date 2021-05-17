@@ -206,6 +206,7 @@ STATIC_URL = env.str('STATIC_URL', default='/static/')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "public"),
+    os.path.join(BASE_DIR, "favicon"),
 ]
 
 # ref:https://github.com/django-compressor/django-compressor/issues/720
